@@ -1,5 +1,11 @@
 <template>
-    <ion-searchbar show-cancel-button="focus" placeholder="Find a Pok&eacute;mon!" @ionBlur="search" v-model="searchText" ></ion-searchbar>
+    <ion-searchbar 
+        show-cancel-button="never"
+        placeholder="Find a Pok&eacute;mon!"
+        @ionBlur="search"
+        @ionClear="deleteCurrentPokemon"
+        v-model="searchText"
+    ></ion-searchbar>
 </template>
 
 <script>
@@ -22,6 +28,9 @@ export default {
                 
                 this.$emit('search-pokemon', pokemonData);
             }
+        },
+        deleteCurrentPokemon() {
+            this.$store.dispatch('setCurrentPokemon', null);
         }
     }
 }
