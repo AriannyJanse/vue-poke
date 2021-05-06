@@ -9,6 +9,7 @@
             </ion-toolbar>
         </ion-header>
         <ion-content>
+            <tabs v-if="this.$route.path.match(/\/pokemon\/.*/g)" />
             <slot />
         </ion-content>
     </ion-page>
@@ -23,6 +24,7 @@ import {
     IonBackButton,
     IonButtons
 } from '@ionic/vue';
+import Tabs from '../Tabs.vue';
 export default {
     props: ['pageTitle', 'pageDefaultBackLink'],
     components: {
@@ -32,7 +34,8 @@ export default {
         IonTitle,
         IonContent,
         IonBackButton,
-        IonButtons
+        IonButtons,
+        Tabs
     }
 }
 </script>

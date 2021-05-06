@@ -31,9 +31,9 @@ const routes = [
       {
         path: 'more',
         component: () => import('../pages/PokemonMorePage.vue')
-      },
-    ]
-  },
+      }
+    ],
+  }
 ]
 
 const router = createRouter({
