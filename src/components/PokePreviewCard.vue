@@ -1,8 +1,8 @@
 <template>
     <ion-card>
-        <ion-img :src="sprite" alt="pokemon-sprite"></ion-img>
+        <ion-img :src="pokemon.sprites.front_default" alt="pokemon-sprite"></ion-img>
         <ion-card-header>
-            <ion-card-title>{{ capitalizeFirstLetter(name) }}</ion-card-title>
+            <ion-card-title>{{ capitalizeFirstLetter(pokemon.name) }}</ion-card-title>
         </ion-card-header>
 
         <ion-card-content>
@@ -12,7 +12,7 @@
                 </ion-row>
                 <ion-row>
                     <ion-col
-                        v-for="type in types"
+                        v-for="type in pokemon.types"
                         :key="type.slot"
                     > {{ capitalizeFirstLetter(type.type.name) }} </ion-col>
                 </ion-row>
@@ -24,12 +24,12 @@
                     <ion-col>Weight</ion-col>
                 </ion-row>
                 <ion-row>
-                    <ion-col>{{ height * 10 }} cm</ion-col>
-                    <ion-col>{{ weight / 10 }} kg</ion-col>
+                    <ion-col>{{ pokemon.height * 10 }} cm</ion-col>
+                    <ion-col>{{ pokemon.weight / 10 }} kg</ion-col>
                 </ion-row>
             </ion-grid>
         </ion-card-content>
-        <ion-button fill="outline" expand="block" > See More </ion-button>
+        <ion-button type="button" fill="outline" expand="block" @click="seeMore" > See More </ion-button>
     </ion-card>
 </template>
 
@@ -47,7 +47,7 @@ import {
 } from '@ionic/vue';
 
 export default {
-    props: ['name', 'types', 'height', 'weight', 'sprite'],
+    props: ['pokemon'],
     components: {
         IonCard,
         IonCardHeader,
@@ -62,6 +62,10 @@ export default {
     methods: {
         capitalizeFirstLetter(string) {
             return string.charAt(0).toUpperCase() + string.slice(1);
+        },
+        seeMore() {
+            this.$router.replace(`/pokemon/info`);
+            this.$store.dispatch('setCurrentPokemon', this.pokemon);
         }
     }
 }

@@ -17,11 +17,7 @@ const store = createStore({
             context.commit('setPokemon', pokemonData);
         }
     },
-    getters: {
-        pokemon(state) {
-            return state.pokemon;
-        },
-    }
+    getters: {}
 });
 
 export default store;
