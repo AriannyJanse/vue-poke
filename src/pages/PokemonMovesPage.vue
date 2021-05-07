@@ -1,5 +1,7 @@
 <template>
-    <h1 v-if="this.$route.path == '/pokemon/moves'">Moves</h1>
+    <div v-if="this.$route.path == '/pokemon/moves'">
+        <h1>Moves</h1>
+    </div>
 </template>
 
 <script>

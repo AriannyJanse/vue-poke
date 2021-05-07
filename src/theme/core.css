@@ -5,3 +5,7 @@ ion-toolbar {
 ion-back-button{
     --color: white;
 }
+.bordered-col {
+    border: 0.5px solid gray;
+    border-radius: 20px;
+}
